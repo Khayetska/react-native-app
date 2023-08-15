@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { TextInput, StyleSheet } from "react-native";
 
-export default function Input({ placeholder, secureTextEntry = false }) {
+export default function Input({
+  placeholder,
+  secureTextEntry = false,
+  autoCapitalize = "sentences",
+}) {
   const [isActive, setIsActive] = useState(false);
 
   const onFocus = () => setIsActive(true);
@@ -20,6 +24,7 @@ export default function Input({ placeholder, secureTextEntry = false }) {
       onFocus={onFocus}
       onBlur={onBlur}
       secureTextEntry={secureTextEntry}
+      autoCapitalize={autoCapitalize}
     />
   );
 }

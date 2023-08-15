@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 import Input from "./Input";
 
@@ -15,7 +22,7 @@ const EntryForm = ({ register = false }) => {
     : [styles.form_wrapper, styles.form_wrapper_accent];
 
   return (
-    <View style={formWrapperStyleName}>
+    <SafeAreaView style={formWrapperStyleName}>
       {register && (
         <View style={styles.user_img_wrapper}>
           <Image style={styles.user_img} />
@@ -29,7 +36,11 @@ const EntryForm = ({ register = false }) => {
         {register && <Input placeholder={"Логін"} />}
         <Input placeholder={"Адреса електронної пошти"} />
         <View>
-          <Input placeholder={"Пароль"} secureTextEntry={!isVisible} />
+          <Input
+            placeholder={"Пароль"}
+            secureTextEntry={!isVisible}
+            autoCapitalize={"none"}
+          />
           <Text style={[styles.text, styles.password_toggle]} onPress={onPress}>
             {!isVisible ? "Показати" : "Заховати"}
           </Text>
@@ -50,7 +61,7 @@ const EntryForm = ({ register = false }) => {
           <Text style={[styles.link, styles.link_accent]}>Зареєструватися</Text>
         </Text>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
