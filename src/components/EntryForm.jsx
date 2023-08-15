@@ -4,9 +4,7 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity,
   TouchableHighlight,
-  SafeAreaView,
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 import Input from "./Input";
@@ -35,7 +33,7 @@ const EntryForm = ({ register = false }) => {
     : [styles.form_wrapper, styles.form_wrapper_accent];
 
   return (
-    <SafeAreaView style={formWrapperStyleName}>
+    <View style={formWrapperStyleName}>
       {register && (
         <View style={styles.user_img_wrapper}>
           <Image style={styles.user_img} />
@@ -87,7 +85,7 @@ const EntryForm = ({ register = false }) => {
           <Text style={[styles.link, styles.link_accent]}>Зареєструватися</Text>
         </Text>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 
