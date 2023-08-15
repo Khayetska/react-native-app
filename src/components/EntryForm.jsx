@@ -1,13 +1,7 @@
 import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
+import Input from "./Input";
 
 const EntryForm = ({ register = false }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,66 +10,44 @@ const EntryForm = ({ register = false }) => {
     setIsVisible(!isVisible);
   };
 
-  const {
-    form_wrapper,
-    form_wrapper_accent,
-    title,
-    inputs_wrapper,
-    input,
-    password_toggle,
-    text,
-    link,
-    link_accent,
-    button,
-    button_text,
-    text_link,
-    user_img_wrapper,
-    user_img,
-    icon_wrapper,
-  } = styles;
-
-  const styleName = register
-    ? form_wrapper
-    : [form_wrapper, form_wrapper_accent];
+  const formWrapperStyleName = register
+    ? styles.form_wrapper
+    : [styles.form_wrapper, styles.form_wrapper_accent];
 
   return (
-    <View style={styleName}>
+    <View style={formWrapperStyleName}>
       {register && (
-        <View style={user_img_wrapper}>
-          <Image style={user_img} />
-          <View style={icon_wrapper}>
+        <View style={styles.user_img_wrapper}>
+          <Image style={styles.user_img} />
+          <View style={styles.icon_wrapper}>
             <EvilIcons name="plus" size={36} color="#FF6C00" />
           </View>
         </View>
       )}
-      <Text style={title}>{register ? "Реєстрація" : "Увійти"} </Text>
-      <View style={inputs_wrapper}>
-        {register && <TextInput style={input} placeholder="Логін" />}
-        <TextInput style={input} placeholder="Адреса електронної пошти" />
+      <Text style={styles.title}>{register ? "Реєстрація" : "Увійти"} </Text>
+      <View style={styles.inputs_wrapper}>
+        {register && <Input placeholder={"Логін"} />}
+        <Input placeholder={"Адреса електронної пошти"} />
         <View>
-          <TextInput
-            style={input}
-            placeholder="Пароль"
-            secureTextEntry={!isVisible}
-          />
-          <Text style={[text, password_toggle]} onPress={onPress}>
+          <Input placeholder={"Пароль"} secureTextEntry={!isVisible} />
+          <Text style={[styles.text, styles.password_toggle]} onPress={onPress}>
             {!isVisible ? "Показати" : "Заховати"}
           </Text>
         </View>
       </View>
-      <TouchableOpacity style={button}>
-        <Text style={button_text}>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.button_text}>
           {register ? "Зареєстуватися" : "Увійти"}
         </Text>
       </TouchableOpacity>
       {register ? (
-        <Text style={[text, text_link]}>
-          Вже є акаунт? <Text style={link}>Увійти</Text>
+        <Text style={[styles.text, styles.text_link]}>
+          Вже є акаунт? <Text style={styles.link}>Увійти</Text>
         </Text>
       ) : (
-        <Text style={[text, text_link]}>
+        <Text style={[styles.text, styles.text_link]}>
           Немає акаунту?{" "}
-          <Text style={[link, link_accent]}>Зареєструватися</Text>
+          <Text style={[styles.link, styles.link_accent]}>Зареєструватися</Text>
         </Text>
       )}
     </View>
@@ -85,20 +57,15 @@ const EntryForm = ({ register = false }) => {
 const styles = StyleSheet.create({
   form_wrapper: {
     backgroundColor: "#fff",
-
-    position: "absolute",
-    bottom: 0,
-    alignSelf: "center",
+    position: "relative",
     alignItems: "center",
-    width: "100%",
 
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
 
     paddingTop: 92,
     paddingBottom: 66,
-    paddingLeft: 16,
-    paddingRight: 16,
+    paddingHorizontal: 16,
   },
   form_wrapper_accent: {
     paddingTop: 32,
@@ -125,23 +92,10 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   inputs_wrapper: {
-    width: 343,
-    marginTop: 33,
+    width: "100%",
     gap: 16,
+    marginTop: 33,
     marginBottom: 43,
-  },
-  input: {
-    height: 50,
-    paddingLeft: 16,
-    backgroundColor: "#F6F6F6",
-
-    borderColor: "#E8E8E8",
-    borderRadius: 8,
-    borderWidth: 1,
-
-    fontWeight: "400",
-    fontSize: 16,
-    color: "#BDBDBD",
   },
   password_toggle: {
     position: "absolute",
@@ -164,10 +118,8 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 100,
 
-    paddingTop: 16,
-    paddingBottom: 16,
-    paddingLeft: 32,
-    paddingRight: 32,
+    paddingVertical: 16,
+    paddingHorizontal: 32,
   },
   button_text: {
     fontSize: 16,

@@ -2,12 +2,11 @@ import { StyleSheet, ImageBackground, View } from "react-native";
 import background from "./../assets/img/background.jpg";
 
 function Background({ children }) {
-  const { container, image } = styles;
-
   return (
-    <View style={container}>
-      <ImageBackground source={background} style={image} />
-      {children}
+    <View style={styles.container}>
+      <ImageBackground source={background} style={styles.image}>
+        {children}
+      </ImageBackground>
     </View>
   );
 }
@@ -19,6 +18,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
+    justifyContent: "flex-end",
   },
 });
 
