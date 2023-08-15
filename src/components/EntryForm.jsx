@@ -5,6 +5,7 @@ import {
   View,
   Image,
   TouchableOpacity,
+  TouchableHighlight,
   SafeAreaView,
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
@@ -12,9 +13,21 @@ import Input from "./Input";
 
 const EntryForm = ({ register = false }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const onPress = () => {
     setIsVisible(!isVisible);
+  };
+
+  const handleSubmit = () => {
+    if (register) console.log(login);
+    console.log(email);
+    console.log(password);
+    if (register) setLogin("");
+    setEmail("");
+    setPassword("");
   };
 
   const formWrapperStyleName = register
@@ -33,10 +46,18 @@ const EntryForm = ({ register = false }) => {
       )}
       <Text style={styles.title}>{register ? "Реєстрація" : "Увійти"} </Text>
       <View style={styles.inputs_wrapper}>
-        {register && <Input placeholder={"Логін"} />}
-        <Input placeholder={"Адреса електронної пошти"} />
+        {register && (
+          <Input value={login} onChangeText={setLogin} placeholder={"Логін"} />
+        )}
+        <Input
+          value={email}
+          onChangeText={setEmail}
+          placeholder={"Адреса електронної пошти"}
+        />
         <View>
           <Input
+            value={password}
+            onChangeText={setPassword}
             placeholder={"Пароль"}
             secureTextEntry={!isVisible}
             autoCapitalize={"none"}
@@ -46,14 +67,19 @@ const EntryForm = ({ register = false }) => {
           </Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableHighlight
+        style={styles.button}
+        onPress={handleSubmit}
+        underlayColor={"#fc8642"}
+      >
         <Text style={styles.button_text}>
           {register ? "Зареєстуватися" : "Увійти"}
         </Text>
-      </TouchableOpacity>
+      </TouchableHighlight>
       {register ? (
         <Text style={[styles.text, styles.text_link]}>
-          Вже є акаунт? <Text style={styles.link}>Увійти</Text>
+          Вже є акаунт?
+          <Text style={styles.link}>Увійти</Text>
         </Text>
       ) : (
         <Text style={[styles.text, styles.text_link]}>

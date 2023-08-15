@@ -2,6 +2,8 @@ import { useState } from "react";
 import { TextInput, StyleSheet } from "react-native";
 
 export default function Input({
+  value,
+  onChangeText,
   placeholder,
   secureTextEntry = false,
   autoCapitalize = "sentences",
@@ -19,6 +21,8 @@ export default function Input({
   return (
     <TextInput
       style={inputStyleName}
+      onChangeText={onChangeText}
+      value={value}
       placeholder={placeholder}
       placeholderTextColor={"#BDBDBD"}
       onFocus={onFocus}
