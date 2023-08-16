@@ -1,13 +1,8 @@
 import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
-} from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 import Input from "./Input";
+import Button from "./Button";
 
 const EntryForm = ({ register = false }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -65,15 +60,11 @@ const EntryForm = ({ register = false }) => {
           </Text>
         </View>
       </View>
-      <TouchableHighlight
-        style={styles.button}
+      <Button
         onPress={handleSubmit}
         underlayColor={"#fc8642"}
-      >
-        <Text style={styles.button_text}>
-          {register ? "Зареєстуватися" : "Увійти"}
-        </Text>
-      </TouchableHighlight>
+        text={register ? "Зареєстуватися" : "Увійти"}
+      />
       {register ? (
         <Text style={[styles.text, styles.text_link]}>
           Вже є акаунт?
@@ -147,20 +138,6 @@ const styles = StyleSheet.create({
   },
   link_accent: {
     textDecorationLine: "underline",
-  },
-  button: {
-    backgroundColor: "#FF6C00",
-    width: "100%",
-    borderRadius: 100,
-
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-  },
-  button_text: {
-    fontSize: 16,
-    fontWeight: "400",
-    color: "#fff",
-    textAlign: "center",
   },
 });
 
