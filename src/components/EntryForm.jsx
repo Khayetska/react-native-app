@@ -67,8 +67,7 @@ const EntryForm = ({ register = false }) => {
       />
       {register ? (
         <Text style={[styles.text, styles.text_link]}>
-          Вже є акаунт?
-          <Text style={styles.link}>Увійти</Text>
+          Вже є акаунт? <Text style={styles.link}>Увійти</Text>
         </Text>
       ) : (
         <Text style={[styles.text, styles.text_link]}>
