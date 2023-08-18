@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
+// import CommentsScreen from "./../screens/CommentsScreen";
 
 export default function PostDetails({
   image,
@@ -20,7 +21,7 @@ export default function PostDetails({
       <Text style={[styles.text, styles.post_title]}>{title}</Text>
       <View style={styles.post_info}>
         <View style={styles.post_statistics}>
-          <TouchableHighlight>
+          <TouchableHighlight underlayColor={"#FF6C00"}>
             <View style={styles.post_reactions}>
               <Feather name="message-circle" size={24} color="#FF6C00" />
               <Text style={styles.text}>{commentsNumber}</Text>

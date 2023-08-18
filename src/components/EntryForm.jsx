@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { EvilIcons } from "@expo/vector-icons";
 import Input from "./Input";
 import Button from "./Button";
@@ -10,17 +17,24 @@ const EntryForm = ({ register = false }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onPress = () => {
+  const navigation = useNavigation();
+
+  const handleShowPress = () => {
     setIsVisible(!isVisible);
   };
+
+  const handleNavigation = (navigateTo) => navigation.navigate(navigateTo);
 
   const handleSubmit = () => {
     if (register) console.log(login);
     console.log(email);
     console.log(password);
+
     if (register) setLogin("");
     setEmail("");
     setPassword("");
+
+    handleNavigation("Home");
   };
 
   const formWrapperStyleName = register
@@ -55,7 +69,10 @@ const EntryForm = ({ register = false }) => {
             secureTextEntry={!isVisible}
             autoCapitalize={"none"}
           />
-          <Text style={[styles.text, styles.password_toggle]} onPress={onPress}>
+          <Text
+            style={[styles.text, styles.password_toggle]}
+            onPress={handleShowPress}
+          >
             {!isVisible ? "Показати" : "Заховати"}
           </Text>
         </View>
@@ -67,12 +84,19 @@ const EntryForm = ({ register = false }) => {
       />
       {register ? (
         <Text style={[styles.text, styles.text_link]}>
-          Вже є акаунт? <Text style={styles.link}>Увійти</Text>
+          Вже є акаунт?{" "}
+          <TouchableWithoutFeedback onPress={() => handleNavigation("Login")}>
+            <Text>Увійти</Text>
+          </TouchableWithoutFeedback>
         </Text>
       ) : (
         <Text style={[styles.text, styles.text_link]}>
           Немає акаунту?{" "}
-          <Text style={[styles.link, styles.link_accent]}>Зареєструватися</Text>
+          <TouchableWithoutFeedback
+            onPress={() => handleNavigation("Registration")}
+          >
+            <Text style={styles.link_accent}>Зареєструватися</Text>
+          </TouchableWithoutFeedback>
         </Text>
       )}
     </View>

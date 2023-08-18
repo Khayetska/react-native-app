@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   SafeAreaView,
   View,
@@ -47,8 +46,6 @@ const POSTS = [
 ];
 
 export default function Posts() {
-  const [posts, setPosts] = useState(POSTS);
-
   return (
     <SafeAreaView style={styles.conteiner}>
       <ScrollView style={{ paddingHorizontal: 16 }}>
@@ -60,8 +57,9 @@ export default function Posts() {
           </View>
         </View>
         <View style={styles.post_list}>
-          {posts.map((post) => (
+          {POSTS.map((post) => (
             <PostDetails
+              key={post.id}
               image={post.image}
               title={post.title}
               commentsNumber={post.commentsNumber}
@@ -79,9 +77,10 @@ const styles = StyleSheet.create({
   conteiner: {
     flex: 1,
     width: "100%",
+    backgroundColor: "#fff",
   },
   user_wrapper: {
-    marginTop: 50, // 32
+    marginTop: 32,
     flexDirection: "row",
     aligAtems: "center",
     gap: 8,
@@ -90,6 +89,7 @@ const styles = StyleSheet.create({
   user_image: {
     width: 60,
     height: 60,
+    borderRadius: 16,
   },
   user_info: {
     justifyContent: "center",
