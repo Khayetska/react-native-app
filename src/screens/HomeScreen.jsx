@@ -54,6 +54,7 @@ export default function HomeScreen() {
           title: "Створити публікацію",
           headerLeft: () => <BackButton />,
           headerRight: () => null,
+          tabBarStyle: { display: "none" },
         }}
       />
       <Tabs.Screen
