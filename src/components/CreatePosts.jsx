@@ -3,12 +3,12 @@ import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
+  TouchableOpacity,
   Keyboard,
 } from "react-native";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 import InputCreatePost from "./InputCreatePost";
 import Button from "./Button";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function CreatePosts() {
   return (
@@ -16,9 +16,11 @@ export default function CreatePosts() {
       <View style={styles.conteiner}>
         <View>
           <View style={styles.img_wrapper}>
-            <View style={styles.camera_icon_wrapper}>
-              <FontAwesome name="camera" size={24} color="#BDBDBD" />
-            </View>
+            <TouchableOpacity>
+              <View style={styles.camera_icon_wrapper}>
+                <FontAwesome name="camera" size={24} color="#BDBDBD" />
+              </View>
+            </TouchableOpacity>
           </View>
           <Text style={styles.text}>Завантажте фото</Text>
           <View>

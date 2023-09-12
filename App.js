@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import RegistrationScreen from "./src/screens/RegistrationScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import HomeScreen from "./src/screens/HomeScreen";
+import CommentsScreen from "./src/screens/CommentsScreen";
 
 const MainStack = createStackNavigator();
 
@@ -26,6 +27,19 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Comments"
+          component={CommentsScreen}
+          options={{
+            headerTitle: "Коментарі",
+            headerTitleAlign: "center",
+            headerTitleStyle: {
+              fontSize: 17,
+              fontWeight: "500",
+              lineHeight: 22,
+            },
+          }}
         />
       </MainStack.Navigator>
       <StatusBar style="auto" />

@@ -1,13 +1,7 @@
 import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { EvilIcons } from "@expo/vector-icons";
+import UserPhoto from "./UserPhoto";
 import Input from "./Input";
 import Button from "./Button";
 
@@ -43,14 +37,7 @@ const EntryForm = ({ register = false }) => {
 
   return (
     <View style={formWrapperStyleName}>
-      {register && (
-        <View style={styles.user_img_wrapper}>
-          <Image style={styles.user_img} />
-          <View style={styles.icon_wrapper}>
-            <EvilIcons name="plus" size={36} color="#FF6C00" />
-          </View>
-        </View>
-      )}
+      {register && <UserPhoto />}
       <Text style={styles.title}>{register ? "Реєстрація" : "Увійти"} </Text>
       <View style={styles.inputs_wrapper}>
         {register && (
@@ -124,17 +111,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: -60,
   },
-  user_img: {
-    width: 120,
-    height: 120,
-    backgroundColor: "#F6F6F6",
-    borderRadius: 16,
-  },
-  icon_wrapper: {
-    position: "absolute",
-    bottom: 12,
-    right: -17,
-  },
+
   title: {
     color: "#212121",
     fontSize: 30,

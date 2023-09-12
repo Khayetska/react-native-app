@@ -1,12 +1,6 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableHighlight,
-} from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
-// import CommentsScreen from "./../screens/CommentsScreen";
+import { useNavigation } from "@react-navigation/native";
 
 export default function PostDetails({
   image,
@@ -15,31 +9,33 @@ export default function PostDetails({
   likesNumber,
   location,
 }) {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.post_wrapper}>
       <Image source={image} style={styles.image} />
       <Text style={[styles.text, styles.post_title]}>{title}</Text>
       <View style={styles.post_info}>
         <View style={styles.post_statistics}>
-          <TouchableHighlight underlayColor={"#FF6C00"}>
+          <TouchableOpacity onPress={() => navigation.navigate("Comments")}>
             <View style={styles.post_reactions}>
               <Feather name="message-circle" size={24} color="#FF6C00" />
               <Text style={styles.text}>{commentsNumber}</Text>
             </View>
-          </TouchableHighlight>
-          <TouchableHighlight>
+          </TouchableOpacity>
+          <TouchableOpacity>
             <View style={styles.post_reactions}>
               <Feather name="thumbs-up" size={24} color="#FF6C00" />
               <Text style={styles.text}>{likesNumber}</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
-        <TouchableHighlight>
+        <TouchableOpacity>
           <View style={styles.post_location}>
             <Feather name="map-pin" size={24} color="#BDBDBD" />
             <Text style={[styles.text, styles.location_name]}>{location}</Text>
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -55,8 +51,8 @@ const styles = StyleSheet.create({
     color: "#212121",
   },
   image: {
-    width: 343,
-    // minWidth: "100%",
+    // width: 343,
+    minWidth: "100%",
     borderRadius: 8,
   },
   post_title: {

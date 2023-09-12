@@ -7,22 +7,31 @@ import {
   Keyboard,
 } from "react-native";
 import background from "./../assets/img/background.jpg";
+import React from "react";
 
 function Background({ children }) {
-  return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={-100}
-      >
+  const componentCheck = children.type.name === "EntryForm";
+
+  return componentCheck ? (
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={-100}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView style={styles.container}>
           <ImageBackground source={background} style={styles.image}>
             {children}
           </ImageBackground>
         </SafeAreaView>
-      </KeyboardAvoidingView>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  ) : (
+    <SafeAreaView style={styles.container}>
+      <ImageBackground source={background} style={styles.image}>
+        {children}
+      </ImageBackground>
+    </SafeAreaView>
   );
 }
 
