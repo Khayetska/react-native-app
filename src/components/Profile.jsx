@@ -41,7 +41,10 @@ export default function Profile() {
       <View style={styles.logout_wrapper}>
         <LogOutButton />
       </View>
-      <ScrollView contentContainerStyle={styles.profile_view}>
+      <ScrollView
+        contentContainerStyle={styles.profile_view}
+        showsVerticalScrollIndicator={false}
+      >
         <Text style={styles.profile_name}>Natali Romanova</Text>
         {POSTS.map((post) => (
           <PostDetails
