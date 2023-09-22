@@ -1,10 +1,9 @@
-import React from "react";
 import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
-import PostsScreen from "./PostsScreen";
-import ProfileScreen from "./ProfileScreen";
-import CreatePostsScreen from "./CreatePostsScreen";
+import PostsScreen from "../screens/PostsScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import CreatePostsScreen from "../screens/CreatePostsScreen";
 import LogOutButton from "./../components/LogOutButton";
 import BackButton from "../components/BackButton";
 

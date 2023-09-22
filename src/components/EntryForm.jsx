@@ -70,21 +70,20 @@ const EntryForm = ({ register = false }) => {
         text={register ? "Зареєстуватися" : "Увійти"}
       />
       {register ? (
-        <Text style={[styles.text, styles.text_link]}>
-          Вже є акаунт?{" "}
-          <TouchableWithoutFeedback onPress={() => handleNavigation("Login")}>
-            <Text>Увійти</Text>
-          </TouchableWithoutFeedback>
-        </Text>
+        <TouchableWithoutFeedback onPress={() => handleNavigation("Login")}>
+          <Text style={[styles.text, styles.text_link]}>
+            Вже є акаунт? <Text>Увійти</Text>
+          </Text>
+        </TouchableWithoutFeedback>
       ) : (
-        <Text style={[styles.text, styles.text_link]}>
-          Немає акаунту?{" "}
-          <TouchableWithoutFeedback
-            onPress={() => handleNavigation("Registration")}
-          >
+        <TouchableWithoutFeedback
+          onPress={() => handleNavigation("Registration")}
+        >
+          <Text style={[styles.text, styles.text_link]}>
+            Немає акаунту?{" "}
             <Text style={styles.link_accent}>Зареєструватися</Text>
-          </TouchableWithoutFeedback>
-        </Text>
+          </Text>
+        </TouchableWithoutFeedback>
       )}
     </View>
   );

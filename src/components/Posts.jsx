@@ -48,7 +48,10 @@ const POSTS = [
 export default function Posts() {
   return (
     <SafeAreaView style={styles.conteiner}>
-      <ScrollView style={{ paddingHorizontal: 16 }}>
+      <ScrollView
+        style={{ paddingHorizontal: 16 }}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.user_wrapper}>
           <Image source={user.photo} style={styles.user_image} />
           <View style={styles.user_info}>
