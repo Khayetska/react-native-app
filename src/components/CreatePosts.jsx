@@ -85,8 +85,7 @@ const styles = StyleSheet.create({
   },
   map_icon: {
     position: "absolute",
-    top: "-50%",
-    transform: [{ translateY: 50 }],
+    top: "30%",
   },
   inputs_list: {
     marginBottom: 32,
